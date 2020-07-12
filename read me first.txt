@@ -1,0 +1,95 @@
+[X-Monitor v 1.0]
+================
+[coding - Vinod.S.r]
+[Contact: smartvinu@gmail.com]
+[Website : http://busytalk.com]
+[tested on : xoops 2.0.13]
+
+@[Other works : Dhtmltextarea patch to xoops (http://busytalk.com/psindia_xoops_core_hack.zip)]
+
+#	 I simply added a logging feature in to uservisit 2.2(author:solo) which enables
+#    tracking of user more simpler ..
+#    If you found any bug please report it at smartvinu@gmail.com'
+    
+@[Special Thanks to solo and who ever worked for uservisit MOD]
+
+This documentation contains 
+	
+	1.Instructions 
+	2.Thanks / Dedications
+    3.TODO
+________________________________________________________________________________________________
+________________________________________________________________________________________________
+
+-- Instructions 
+^^^^^^^^^^^^^^^^
+
+.1.Copy the directory xmonitor into the module directory of your xoops installation
+
+.2.replace the header.php and footer.php in the root directory by those give or simply append the following 
+   to the coresponding files
+   
+   
+   --footer.php , append
+          include(XOOPS_ROOT_PATH."/modules/xmonitor/index.php"); 
+   
+   --include/cp_functions.php , append the line to the end of xoops_cp_footer()
+          include(XOOPS_ROOT_PATH."/modules/xmonitor/index.php"); 
+                 
+          
+          
+   --mainfile.php , append
+          include(XOOPS_ROOT_PATH."/modules/xmonitor/header.php");        
+          
+          
+.3.When You want logging in a module say in , newbb -> when a moderator deletes a post ,you want to log it then
+   insert the following lines into the  deleting statements , before the redirecting line
+   
+   ......... // Post deleting statements '
+   
+   insertlog("Post Deleted");
+   xoops_redirect(".... Post deleted ....
+   
+   all done !
+   
+  4.If you only want to administrate the  MODULE-xmonitor then open the file "admin_header.php" in the "include" dir of "xmonitor"..
+    
+     
+        You will see a code like this 
+                   if($xoopsUser)
+        
+        change it to 
+                   if($xoopsUser && $xoopsUser->getVar('uid') == 1) if you uid is 2 change the "1" by "2" ..            
+                                                                 -
+                   
+
+--Thanks / Dedications
+^^^^^^^^^^^^^^^^^^^^^^
+
+***** Xoops Community and dev team for building up xoops without which i cannot make this MOD
+
+**** *#####################################################
+	 #  Special Thanks to #
+	 #   Pascal Le Boustouller		#
+	 #   Solo ( www.wolfpackclan.com )	- uservist module#
+	 ##################################################
+
+   
+   This is dedicated to  | my parents ,my grand parents, my brothers ,my friends ^TROJANS  ......
+   
+--TODO
+^^^^^^
+
+  -1- Implementing the logging list limited to certain number
+  
+   [if you found any bugs or tips plz call me smartvinu@gmail.com]
+  
+  
+  
+  
+!               (nice day :D)
+               
+  
+    
+    
+   
